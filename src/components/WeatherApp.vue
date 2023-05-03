@@ -39,18 +39,11 @@ export default {
   },
   methods: {
     async getApi() {
-      if(this.data.city === '') {
-        this.data.city = "Paris"
-      }
-      const getWeather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.data.city}&appid=261514ec6ead072a338a344dce0fb58f`);
-      console.log(getWeather);
+      if(!this.data.city) this.data.city = 'Paris'
+      const getWeather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.data.city}&appid=${process.env.VUE_APP_ID}`);
       this.data.weather = getWeather.data;
       this.data.city = ''
-      if(this.data.weather.main.temp > 16){
-        this.state_weather = true
-      } else {
-        this.state_weather = false
-      }
+      this.state_weather = (this.data.weather.main.temp > 16) ? true : false;
     }
   }
 }
