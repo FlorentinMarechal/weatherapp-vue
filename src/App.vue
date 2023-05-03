@@ -1,14 +1,14 @@
 <template>
-  <weatherApp />
+  <WeatherApp />
 </template>
 
 <script>
-import weatherApp from './components/weather-app.vue'
+import WeatherApp from './components/WeatherApp.vue'
 
 export default {
   name: 'App',
   components: {
-    weatherApp
+    WeatherApp
   }
 }
 </script>
